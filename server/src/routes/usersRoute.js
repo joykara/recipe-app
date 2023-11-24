@@ -10,8 +10,11 @@ router.post('/register', async (req, res) => {
     // const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await UserModel.findOne({ username })
-    
-    // res.status(201).json({ message: "User Created!" })
+
+    res.json(user);
 })
+
+// Login
+router.post('/login', async (req, res) => { });
 
 export { router as userRouter };
