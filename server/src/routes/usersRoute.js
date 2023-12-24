@@ -18,8 +18,6 @@ router.post('/register', async (req, res) => {
     const newUser = new UserModel({ username, password: hashedPassword });
     await newUser.save();
 
-    // create token
-    // const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET);
     // res.cookie("token", token, {
     //     httpOnly: true,
     //     maxAge: 24 * 60 * 60 * 1000 // 1 day
@@ -30,6 +28,19 @@ router.post('/register', async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
+    const user = await UserModel.findOne({ username });
+
+    if (!user) {
+        return res.json("User Doesn't Exists!");
+    }
+    const validPassword = await bcrypt.compare(password, user.password);
+
+    if (!validPassword) {
+        return res.json("Invalid Password!");
+    }
+    // create token
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+    res.json({ token, userId: user._id });
 });
 
 export { router as userRouter };
