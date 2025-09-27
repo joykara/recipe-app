@@ -1,0 +1,27 @@
+{
+  "name": "recipe-app",
+  "version": "1.0.0",
+  "description": "Recipe App",
+  "homepage": "https://github.com/joykara/recipe-app#readme",
+  "bugs": {
+    "url": "https://github.com/joykara/recipe-app/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joykara/recipe-app.git"
+  },
+  "license": "MIT",
+  "author": "Joy Karani",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "consolidate": "^1.0.4",
+    "dust": "^0.3.0",
+    "dustjs-helpers": "^1.7.4",
+    "dustjs-linkedin": "^2.7.5",
+    "pg": "^8.16.3"
+  }
+}
